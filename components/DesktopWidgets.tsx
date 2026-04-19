@@ -40,7 +40,6 @@ export default function DesktopWidgets() {
   const year = now.getFullYear();
   const month = now.getMonth();
   const date = now.getDate();
-  const dayOfWeek = now.getDay();
 
   const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   const dayNames = ["Su","Mo","Tu","We","Th","Fr","Sa"];
