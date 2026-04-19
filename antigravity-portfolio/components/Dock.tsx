@@ -116,7 +116,7 @@ export default function Dock({ onResumeDownload }: DockProps) {
                 </m.button>
 
                 {/* Persistent Label */}
-                <span className="text-[10px] text-white/50 font-medium mt-1.5 select-none text-center w-full leading-tight group-hover:text-white transition-colors duration-200">
+                <span className="text-[10px] text-white/70 font-bold mt-1.5 select-none text-center w-full leading-tight group-hover:text-white transition-colors duration-200">
                   {item.label}
                 </span>
 
@@ -143,7 +143,7 @@ export default function Dock({ onResumeDownload }: DockProps) {
             >
               <span className="text-2xl">📄</span>
             </m.button>
-            <span className="text-[10px] text-white/50 font-medium mt-1.5 select-none group-hover:text-white transition-colors duration-200">Resume</span>
+            <span className="text-[10px] text-white/70 font-bold mt-1.5 select-none group-hover:text-white transition-colors duration-200">Resume</span>
             <div className="h-1 w-1 rounded-full mt-1.5 opacity-0" />
           </div>
 
@@ -180,7 +180,7 @@ export default function Dock({ onResumeDownload }: DockProps) {
                 <div className="absolute inset-0 rounded-[13px] bg-red-500/20 animate-pulse" />
               )}
             </m.button>
-            <span className="text-[10px] text-white/50 font-medium mt-1.5 select-none group-hover:text-white transition-colors duration-200">
+            <span className="text-[10px] text-white/70 font-bold mt-1.5 select-none group-hover:text-white transition-colors duration-200">
               {overTrash ? "Delete" : "Trash"}
             </span>
             <div className="h-1 w-1 rounded-full mt-1.5 opacity-0" />
