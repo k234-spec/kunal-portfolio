@@ -82,12 +82,22 @@ export default function Dock({ onResumeDownload }: DockProps) {
   };
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)]">
+    <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)]">
       <div
         className="overflow-x-auto"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
       >
-        <div className="bg-white/10 backdrop-blur-2xl border border-white/20 px-6 py-4 rounded-2xl flex items-end gap-6 shadow-2xl w-max">
+        <div 
+          className="px-4 py-3 rounded-[24px] flex items-end gap-3 shadow-[0_20px_50px_rgba(0,0,0,0.3)] w-max relative"
+          style={{ 
+            background: "rgba(220, 220, 225, 0.25)", 
+            backdropFilter: "blur(45px) saturate(200%)", 
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.3)"
+          }}
+        >
+          {/* Inner glass highlight */}
+          <div className="absolute inset-0 rounded-[24px] pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%)" }} />
 
           {/* ── Dock items ── */}
           {visibleItems.map((item) => {
@@ -102,7 +112,7 @@ export default function Dock({ onResumeDownload }: DockProps) {
                 draggable
                 onDragStart={(e) => handleDragStart(e, item.id)}
                 onDragEnd={handleDragEnd}
-                className={`relative group flex flex-col items-center shrink-0 min-w-[100px] ${
+                className={`relative group flex flex-col items-center shrink-0 min-w-[70px] ${
                   isDragging ? "opacity-30" : "opacity-100"
                 }`}
               >
@@ -134,7 +144,7 @@ export default function Dock({ onResumeDownload }: DockProps) {
           <div className="w-[1px] h-8 bg-white/20 mx-1 self-center shrink-0" />
 
           {/* Resume */}
-          <div className="relative group flex flex-col items-center shrink-0 min-w-[100px]">
+          <div className="relative group flex flex-col items-center shrink-0 min-w-[70px]">
             <m.button
               onClick={onResumeDownload}
               whileHover={{ scale: 1.15, y: -4 }}
@@ -155,7 +165,7 @@ export default function Dock({ onResumeDownload }: DockProps) {
             onDragOver={handleTrashDragOver}
             onDragLeave={handleTrashDragLeave}
             onDrop={handleTrashDrop}
-            className="relative group flex flex-col items-center shrink-0 min-w-[100px]"
+            className="relative group flex flex-col items-center shrink-0 min-w-[70px]"
           >
             {/* Drop zone glow ring */}
             <m.button

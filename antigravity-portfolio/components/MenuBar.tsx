@@ -56,9 +56,9 @@ export default function MenuBar() {
       data-menubar
       className="fixed top-0 left-0 w-full h-[28px] z-50 flex justify-between items-center px-3 select-none"
       style={{
-        background: "rgba(0,0,0,0.52)",
-        backdropFilter: "blur(24px) saturate(180%)",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        background: "rgba(235, 235, 240, 0.25)",
+        backdropFilter: "blur(40px) saturate(210%)",
+        borderBottom: "1px solid rgba(255,255,255,0.15)",
         WebkitFontSmoothing: "antialiased",
       }}
     >
