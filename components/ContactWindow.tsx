@@ -3,13 +3,49 @@
 import Window from "./Window";
 import { useDesktop } from "@/context/DesktopContext";
 import Image from "next/image";
-import { Code, Briefcase, MessageCircle, Users } from "lucide-react";
+import { useState } from "react";
+import { Code, Briefcase, MessageCircle, Users, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 export default function ContactWindow() {
   const { closeWindow, minimizeWindow, focusWindow, activeWindow, openWindows } = useDesktop();
   const id = "contact";
 
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
   if (!openWindows.includes(id)) return null;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_095lsu8",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_8h790of",
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+          to_name: "Kunal Mangla",
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "P9XN3q6iN-rB1N67r"
+      );
+      setStatus("success");
+      setFormState({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setStatus("error");
+    }
+  };
 
   return (
     <Window
@@ -75,49 +111,91 @@ export default function ContactWindow() {
 
         <div className="pt-8 border-t border-white/5">
           <h2 className="font-syne font-bold text-[20px] mb-6">Send a Message</h2>
-          <form className="space-y-4 pb-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          {status === "success" ? (
+            <div className="bg-[#28ca41]/10 border border-[#28ca41]/20 rounded-2xl p-8 flex flex-col items-center text-center">
+              <CheckCircle2 size={48} className="text-[#28ca41] mb-4" />
+              <h3 className="font-syne font-bold text-[18px] text-white mb-2">Message Sent!</h3>
+              <p className="font-sans text-gray-400 mb-6">Thank you for reaching out. I&apos;ll get back to you as soon as possible.</p>
+              <button 
+                onClick={() => setStatus("idle")}
+                className="text-accent font-mono text-[12px] uppercase tracking-wider hover:underline"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4 pb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="font-mono text-[11px] text-gray-500 uppercase">Name</label>
+                  <input 
+                    required
+                    type="text" 
+                    placeholder="Your Name" 
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all text-white"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="font-mono text-[11px] text-gray-500 uppercase">Email</label>
+                  <input 
+                    required
+                    type="email" 
+                    placeholder="your@email.com" 
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all text-white"
+                  />
+                </div>
+              </div>
               <div className="space-y-1.5">
-                <label className="font-mono text-[11px] text-gray-500 uppercase">Name</label>
+                <label className="font-mono text-[11px] text-gray-500 uppercase">Subject</label>
                 <input 
+                  required
                   type="text" 
-                  placeholder="Your Name" 
-                  className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all"
+                  placeholder="How can I help you?" 
+                  value={formState.subject}
+                  onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
+                  className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all text-white"
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="font-mono text-[11px] text-gray-500 uppercase">Email</label>
-                <input 
-                  type="email" 
-                  placeholder="your@email.com" 
-                  className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all"
+                <label className="font-mono text-[11px] text-gray-500 uppercase">Message</label>
+                <textarea 
+                  required
+                  rows={4}
+                  placeholder="Tell me about your project..." 
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all resize-none text-white"
                 />
               </div>
-            </div>
-            <div className="space-y-1.5">
-              <label className="font-mono text-[11px] text-gray-500 uppercase">Subject</label>
-              <input 
-                type="text" 
-                placeholder="How can I help you?" 
-                className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label className="font-mono text-[11px] text-gray-500 uppercase">Message</label>
-              <textarea 
-                rows={4}
-                placeholder="Tell me about your project..." 
-                className="w-full bg-[#111] border border-white/5 rounded-xl px-4 py-3 text-[14px] focus:border-accent/50 outline-none transition-all resize-none"
-              />
-            </div>
-            <button 
-              type="submit"
-              onClick={(e) => e.preventDefault()}
-              className="w-full bg-accent text-black font-syne font-bold py-4 rounded-xl hover:bg-accent/90 transition-all text-[15px] shadow-lg shadow-accent/10 mt-2"
-            >
-              Send Message
-            </button>
-          </form>
+
+              {status === "error" && (
+                <div className="flex items-center gap-2 text-red-400 text-[13px] bg-red-400/10 p-3 rounded-lg border border-red-400/20">
+                  <AlertCircle size={16} />
+                  <span>Failed to send message. Please try again or email me directly.</span>
+                </div>
+              )}
+
+              <button 
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full bg-accent text-black font-syne font-bold py-4 rounded-xl hover:bg-accent/90 transition-all text-[15px] shadow-lg shadow-accent/10 mt-2 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === "loading" ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
+              </button>
+            </form>
+          )}
         </div>
 
       </div>

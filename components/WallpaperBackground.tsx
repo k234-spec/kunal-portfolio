@@ -4,14 +4,19 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const wallpapers = [
-  "/desktop-1.jpg",
-  "/desktop-2.jpg",
-  "/desktop-3.jpg",
-  "/desktop-6.jpg",
-  "/desktop-8.jpg",
-  "/desktop-11.jpg",
-  "/desktop-15.jpg",
-  "/desktop-16.jpg"
+  "/wallpaper-1.jpg",
+  "/wallpaper-2.jpg",
+  "/wallpaper-3.jpg",
+  "/wallpaper-4.jpg",
+  "/wallpaper-5.jpg",
+  "/wallpaper-6.jpg",
+  "/wallpaper-7.jpg",
+  "/wallpaper-8.jpg",
+  "/wallpaper-9.jpg",
+  "/wallpaper-10.jpg",
+  "/wallpaper-11.jpg",
+  "/wallpaper-12.jpg",
+  "/wallpaper-13.jpg"
 ];
 
 export default function WallpaperBackground() {
@@ -20,7 +25,7 @@ export default function WallpaperBackground() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWallpaperIndex((prev) => (prev + 1) % wallpapers.length);
-    }, 60000); // Change wallpaper every 60 seconds to reduce lag
+    }, 60000); // Change wallpaper every 60 seconds
     return () => clearInterval(interval);
   }, []);
 
