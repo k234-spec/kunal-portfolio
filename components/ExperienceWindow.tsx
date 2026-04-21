@@ -36,8 +36,8 @@ export default function ExperienceWindow() {
               </span>
             )}
             {exp.logo ? (
-              <div className="w-12 h-12 flex-shrink-0 relative rounded-md overflow-hidden bg-white">
-                <Image src={exp.logo} alt={exp.company} fill className="object-contain p-1" />
+              <div className="w-12 h-12 flex-shrink-0 relative rounded-lg overflow-hidden bg-[#2a2a2a] border border-white/10 p-1">
+                <Image src={exp.logo} alt={exp.company} fill className="object-contain" />
               </div>
             ) : (
               <div className="w-12 h-12 flex-shrink-0 bg-[#2a2a2a] rounded-md flex items-center justify-center text-xl">

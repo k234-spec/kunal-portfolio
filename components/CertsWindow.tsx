@@ -11,27 +11,27 @@ const certs = [
     name: "Stock Market Certificate",
     platform: "Spring Pad Institute",
     date: "2023",
-    verifyUrl: "/stock market certificate.jfif",
-    image: "/stock market certificate.jfif",
-    downloadPath: "/stock market certificate.jfif"
+    verifyUrl: "/stock-market-certificate.jfif",
+    image: "/stock-market-certificate.jfif",
+    downloadPath: "/stock-market-certificate.jfif"
   },
   {
     id: "2",
     name: "UI/UX Certificate",
     platform: "Institute",
     date: "2023",
-    verifyUrl: "/ui ux certificate.jfif",
-    image: "/ui ux certificate.jfif",
-    downloadPath: "/ui ux certificate.jfif"
+    verifyUrl: "/ui-ux-certificate.jfif",
+    image: "/ui-ux-certificate.jfif",
+    downloadPath: "/ui-ux-certificate.jfif"
   },
   {
     id: "3",
     name: "V Prop Trader Certificate",
     platform: "Prop V Trader",
     date: "2023",
-    verifyUrl: "/v prop trader certificate.jfif",
-    image: "/v prop trader certificate.jfif",
-    downloadPath: "/v prop trader certificate.jfif"
+    verifyUrl: "/v-prop-trader-certificate.jfif",
+    image: "/v-prop-trader-certificate.jfif",
+    downloadPath: "/v-prop-trader-certificate.jfif"
   }
 ];
 

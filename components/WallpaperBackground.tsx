@@ -4,19 +4,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const wallpapers = [
-  "/desktop 1.jpg",
-  "/desktop 2.jpg",
-  "/desktop 3.jpg",
-  "/desktop 5.jpg",
-  "/desktop 6.jpg",
-  "/desktop 7.jpg",
-  "/desktop 8.jpg",
-  "/desktop 9.jpg",
-  "/desktop 10.png",
-  "/desktop 11.jpg",
-  "/desktop 14.jpg",
-  "/desktop 15.jpg",
-  "/desktop 16.jpg"
+  "/desktop-1.jpg",
+  "/desktop-2.jpg",
+  "/desktop-3.jpg",
+  "/desktop-6.jpg",
+  "/desktop-8.jpg",
+  "/desktop-11.jpg",
+  "/desktop-15.jpg",
+  "/desktop-16.jpg"
 ];
 
 export default function WallpaperBackground() {

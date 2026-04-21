@@ -37,7 +37,7 @@ export default function AboutWindow() {
     >
       <div className="flex flex-col items-center text-center py-8">
         <div className="w-[120px] h-[120px] rounded-full overflow-hidden bg-[#181818] mb-6 relative border-2 border-white/10 shadow-2xl">
-          <Image src="/profile-photo.png" alt="Kunal Mangla" fill sizes="120px" className="object-cover" />
+          <Image src="/profile-photo.jpg" alt="Kunal Mangla" fill sizes="120px" className="object-cover" />
         </div>
         <h1 className="font-syne font-extrabold text-[32px] text-text mb-2">Kunal Mangla</h1>
         <h2 className="font-mono text-accent tracking-[4px] uppercase text-[11px] mb-4">Product Engineer</h2>
