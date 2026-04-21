@@ -1,0 +1,11 @@
+{
+    "service_id": "service_095lsu8",
+    "template_id": "template_8h790of",
+    "user_id": "P9XN3q6iN-rB1N67r",
+    "template_params": {
+        "from_name": "Test",
+        "from_email": "test@example.com",
+        "subject": "Test",
+        "message": "Test"
+    }
+}

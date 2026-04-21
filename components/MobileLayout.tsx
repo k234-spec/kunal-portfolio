@@ -36,8 +36,8 @@ export default function MobileLayout() {
     try {
       track('contact_form_submit');
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_095lsu8",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_8h790of",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         { 
           from_name: formState.name, 
           from_email: formState.email, 
@@ -45,7 +45,7 @@ export default function MobileLayout() {
           message: formState.message,
           to_name: "Kunal Mangla"
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "P9XN3q6iN-rB1N67r"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setStatus("success");
       setFormState({ name: "", email: "", subject: "", message: "" });
