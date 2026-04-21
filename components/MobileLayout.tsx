@@ -18,9 +18,9 @@ const phrases = [
 ];
 
 const certs = [
-  { id: "1", name: "Stock Market Certificate", platform: "Spring Pad Institute", date: "2023", verifyUrl: "/stock-market-certificate.jfif", image: "/stock-market-certificate.jfif" },
-  { id: "2", name: "UI/UX Certificate", platform: "Institute", date: "2023", verifyUrl: "/ui-ux-certificate.jfif", image: "/ui-ux-certificate.jfif" },
-  { id: "3", name: "V Prop Trader Certificate", platform: "Prop V Trader", date: "2023", verifyUrl: "/v-prop-trader-certificate.jfif", image: "/v-prop-trader-certificate.jfif" }
+  { id: "1", name: "Stock Market Certificate", platform: "Spring Pad Institute", date: "2023", verifyUrl: "/stock-market-certificate.jpg", image: "/stock-market-certificate.jpg" },
+  { id: "2", name: "UI/UX Certificate", platform: "Institute", date: "2023", verifyUrl: "/ui-ux-certificate.jpg", image: "/ui-ux-certificate.jpg" },
+  { id: "3", name: "V Prop Trader Certificate", platform: "Prop V Trader", date: "2023", verifyUrl: "/v-prop-trader-certificate.jpg", image: "/v-prop-trader-certificate.jpg" }
 ];
 
 export default function MobileLayout() {

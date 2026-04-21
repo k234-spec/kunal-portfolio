@@ -19,7 +19,7 @@ export const experience: Experience[] = [
       "Configured and managed ERP systems for various clients.",
       "Provided functional consulting and system optimization strategies.",
     ],
-    logo: "/kiran-consultants.jfif"
+    logo: "/kiran-consultants.jpg"
   },
   {
     id: "abacus-desk",
@@ -31,7 +31,7 @@ export const experience: Experience[] = [
       "Designed and implemented B2B lead generation campaigns.",
       "Managed marketing automation workflows to increase engagement.",
     ],
-    logo: "/abacus-desk.jfif"
+    logo: "/abacus-desk.jpg"
   },
   {
     id: "brawn-pharmaceuticals",
@@ -43,7 +43,7 @@ export const experience: Experience[] = [
       "Administered ERP systems for seamless pharmaceutical operations.",
       "Handled master data configuration and process monitoring.",
     ],
-    logo: "/brawn.jfif"
+    logo: "/brawn.jpg"
   },
   {
     id: "adobe",
@@ -67,6 +67,6 @@ export const experience: Experience[] = [
       "Designed AR/VR app user interfaces for enhanced user experience.",
       "Assisted in testing and developing immersive environments.",
     ],
-    logo: "/innovate-labs.jfif"
+    logo: "/innovate-labs.jpg"
   },
 ];
