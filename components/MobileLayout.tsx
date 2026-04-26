@@ -9,12 +9,13 @@ import { projects } from "@/data/projects";
 import { experience } from "@/data/experience";
 import emailjs from '@emailjs/browser';
 import { track } from "@vercel/analytics";
+import * as LucideIcons from "lucide-react";
 
 const phrases = [
-  "Full Stack Developer",
-  "Product Engineer",
-  "Marketing Tech Builder",
-  "AI Workflow Architect"
+  "Technopreneur",
+  "Software Consultant",
+  "Business Value Builder",
+  "Value-Driven Solutions"
 ];
 
 const certs = [
@@ -68,11 +69,7 @@ export default function MobileLayout() {
     items: skills.filter(s => s.category === cat || (cat === "Tools & Others" && s.category === "Tools"))
   })).filter(g => g.items.length > 0);
 
-  const getLevelColor = (level: string) => {
-    if (level === "beginner") return "bg-[#555]";
-    if (level === "intermediate") return "bg-[#ffbd2e]";
-    return "bg-[#28ca41]";
-  };
+
 
   const scrollTo = (id: string) => {
     setIsMenuOpen(false);
@@ -112,12 +109,12 @@ export default function MobileLayout() {
           <Image src="/profile-photo.jpg" alt="Kunal Mangla" fill sizes="120px" className="object-cover" />
         </div>
         <h1 className="font-syne font-extrabold text-[32px] text-text mb-2">Kunal Mangla</h1>
-        <h2 className="font-mono text-accent tracking-[4px] uppercase text-[11px] mb-4">Product Engineer</h2>
+        <h2 className="font-mono text-accent tracking-[4px] uppercase text-[11px] mb-4">Technopreneur & Software Consultant</h2>
         <div className="font-mono text-accent text-[14px] h-6 flex items-center justify-center mb-8">
           <span>{displayText}</span><span className="cursor-blink inline-block w-2 ml-1">|</span>
         </div>
         <p className="font-sans text-muted leading-relaxed mb-8 text-[15px]">
-          B.Tech in Computer Science (AI/ML). Currently working as a Marketing Automation Analyst, building automated lead gen systems and CRM workflows. Transitioning into full-stack engineering and product leadership.
+          I am a Technopreneur and Software Consultant dedicated to helping businesses build value through innovative and valuable digital solutions. I specialize in bridging the gap between business needs and technical excellence.
         </p>
         <div className="flex flex-col w-full gap-4">
           <button onClick={() => scrollTo('projects')} className="bg-accent text-[#0a0a0a] font-syne font-bold text-sm px-6 py-4 rounded-lg w-full">View My Work</button>
@@ -127,19 +124,42 @@ export default function MobileLayout() {
 
       {/* Skills Section */}
       <section id="skills" className="px-6 py-20 bg-surface">
-        <h3 className="font-mono text-[11px] text-accent tracking-[4px] uppercase mb-8">{"// SKILLS"}</h3>
-        <div className="flex flex-col gap-8">
+        <h3 className="font-mono text-[11px] text-accent tracking-[4px] uppercase mb-10">{"// SKILLS & EXPERTISE"}</h3>
+        <div className="flex flex-col gap-12">
           {groupedSkills.map((category, index) => (
             <div key={category.name} className="flex flex-col">
-              <span className="font-mono text-[11px] text-muted tracking-[2px] uppercase mb-4">{category.name}</span>
-              <div className="flex flex-wrap gap-2">
-                {category.items.map(skill => (
-                  <div key={skill.id} className="bg-surface-2 border border-border rounded-full px-3 py-1.5 font-sans text-[12px] font-medium text-text flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${getLevelColor(skill.level)}`}></span>{skill.name}
-                  </div>
-                ))}
+              <div className="flex items-center gap-3 mb-6">
+                <span className="font-mono text-[10px] text-accent tracking-[2px] uppercase bg-accent/10 px-2 py-1 rounded">
+                  {category.name}
+                </span>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-accent/20 to-transparent"></div>
               </div>
-              {index < groupedSkills.length - 1 && <div className="h-[1px] w-full bg-border mt-8"></div>}
+              <div className="grid grid-cols-1 gap-4">
+                {category.items.map(skill => {
+                  const IconComponent = (LucideIcons as any)[skill.icon] || LucideIcons.Code;
+                  const getLevelColor = (level: string) => {
+                    if (level === "beginner") return "#555";
+                    if (level === "intermediate") return "#ffbd2e";
+                    return "#28ca41";
+                  };
+                  return (
+                    <div key={skill.id} className="bg-surface-2 border border-border rounded-xl p-4 flex flex-col gap-3 shadow-sm">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-surface-3 border border-border text-accent">
+                          <IconComponent size={20} strokeWidth={1.5} />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="font-syne font-bold text-[14px] text-text">{skill.name}</span>
+                          <span className="font-mono text-[9px] uppercase tracking-wider" style={{ color: getLevelColor(skill.level) }}>{skill.level}</span>
+                        </div>
+                      </div>
+                      <p className="text-[12px] font-sans text-muted leading-relaxed">
+                        {skill.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>

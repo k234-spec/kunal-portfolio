@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "framer-motion";
 import Window from "./Window";
@@ -44,6 +44,20 @@ export default function PhotosWindow() {
       setLightboxIndex((lightboxIndex - 1 + photos.length) % photos.length);
     }
   };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxIndex === null) return;
+      
+      if (e.key === "ArrowRight") nextPhoto();
+      if (e.key === "ArrowLeft") prevPhoto();
+      if (e.key === "Escape") setLightboxIndex(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex]);
 
   return (
     <Window

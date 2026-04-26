@@ -24,12 +24,26 @@ export default function ContactWindow() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS Configuration Error: Missing environment variables.");
+      if (!serviceId) console.error("Missing: NEXT_PUBLIC_EMAILJS_SERVICE_ID");
+      if (!templateId) console.error("Missing: NEXT_PUBLIC_EMAILJS_TEMPLATE_ID");
+      if (!publicKey) console.error("Missing: NEXT_PUBLIC_EMAILJS_PUBLIC_KEY");
+      setStatus("error");
+      return;
+    }
+
     setStatus("loading");
 
     try {
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        serviceId,
+        templateId,
         {
           from_name: formState.name,
           from_email: formState.email,
@@ -37,7 +51,7 @@ export default function ContactWindow() {
           message: formState.message,
           to_name: "Kunal Mangla",
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        publicKey
       );
       setStatus("success");
       setFormState({ name: "", email: "", subject: "", message: "" });

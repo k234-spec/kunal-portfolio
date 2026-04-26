@@ -6,10 +6,10 @@ import Image from "next/image";
 import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 
 const phrases = [
-  "Full Stack Developer",
-  "Product Engineer",
-  "Marketing Tech Builder",
-  "AI Workflow Architect"
+  "Technopreneur",
+  "Software Consultant",
+  "Business Value Builder",
+  "Value-Driven Solutions"
 ];
 
 export default function AboutWindow() {
@@ -40,12 +40,12 @@ export default function AboutWindow() {
           <Image src="/profile-photo.jpg" alt="Kunal Mangla" fill sizes="120px" className="object-cover" />
         </div>
         <h1 className="font-syne font-extrabold text-[32px] text-text mb-2">Kunal Mangla</h1>
-        <h2 className="font-mono text-accent tracking-[4px] uppercase text-[11px] mb-4">Product Engineer</h2>
+        <h2 className="font-mono text-accent tracking-[4px] uppercase text-[11px] mb-4">Technopreneur & Software Consultant</h2>
         <div className="font-mono text-accent text-[14px] h-6 flex items-center justify-center mb-8">
           <span>{displayText}</span><span className="cursor-blink inline-block w-2 ml-1">|</span>
         </div>
         <p className="font-sans text-muted leading-relaxed mb-8 text-[15px] max-w-md">
-          B.Tech in Computer Science (AI/ML). Currently working as a Marketing Automation Analyst, building automated lead gen systems and CRM workflows. Transitioning into full-stack engineering and product leadership.
+          I am a Technopreneur and Software Consultant dedicated to helping businesses build value through innovative and valuable digital solutions. I specialize in bridging the gap between business needs and technical excellence.
         </p>
       </div>
     </Window>
